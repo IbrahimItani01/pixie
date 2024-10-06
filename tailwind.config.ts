@@ -9,8 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primaryColor : "#FFFFFF",
+        secondaryColor: "#CB6CE6",
+        actionColor: "#DF5585",
+        gradientFirst:"#FF5757",
+        gradientSecond: "#8C52FF",
       },
     },
   },
