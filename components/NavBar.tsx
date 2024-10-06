@@ -5,7 +5,7 @@ import React from 'react'
 const NavBar = () => {
   return (
     <nav className='shadow-xl h-[70px] flex'>
-        <div className='flex items-center'>
+        <div key="logo" className='flex items-center'>
           <Link
             href="/"
           >
@@ -18,7 +18,9 @@ const NavBar = () => {
           </Link>
           <h1 className='text-2xl font-semibold'>Pixie</h1>
         </div>
-        <div></div>
+        <div key="DropDownMobile">
+            
+        </div>
     </nav>
   )
 }
