@@ -54,11 +54,11 @@ export default function MobileSideNav() {
 
       {/* Side Screen */}
       <div
-        className={`fixed top-0 right-0 w-64 h-full bg-background shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 w-64 h-screen bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="p-4 flex flex-col space-y-60">
+        <div className="p-4 flex flex-col h-screen">
             <div>
                 <Button
                     onClick={() => setIsOpen(false)}
@@ -70,7 +70,7 @@ export default function MobileSideNav() {
                     <X className="h-6 w-6 self-end" />
                 </Button>
             </div>
-            <div key="main-sections" className="flex flex-col gap-y-10 items-center ">
+            <div key="main-sections" className="mt-[250px] flex flex-col gap-y-10 ">
                 <Link href="/" className={cn(
                     "font-semibold w-full h-10 flex items-center justify-center rounded-xl",
                     pathName === "/" && "bg-gradient text-primaryColor"
@@ -90,7 +90,7 @@ export default function MobileSideNav() {
                     Contact Us
                 </Link>
             </div>
-            <div key="auth-section" className="flex flex-col gap-y-3 pt-16">
+            <div key="auth-section" className="flex flex-col gap-y-3 mt-auto">
                 {/* TODO: ADD CLERK SIGIN AND SIGN UP */}
                 <Button variant="ghost" size="lg" className="font-semibold">
                     Login

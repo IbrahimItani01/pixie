@@ -10,7 +10,7 @@ export default function Home() {
         key="hero"
         className="bg-gradient h-[500px] flex flex-col items-center justify-center w-full"
       >
-        <div className="items-center flex flex-col bg-white w-[95%] gap-y-10 py-10">
+        <div className=" mx-auto items-center flex flex-col bg-white w-[95%] gap-y-10 py-10 rounded-sm max-w-screen-lg">
           <div className="text-3xl text-center flex flex-col">
             <h1>Your AI Companion for: </h1>
             <span className="text-gradientFirst">
@@ -30,7 +30,7 @@ export default function Home() {
               />
             </span>
           </div>
-          <div className=" flex flex-col gap-y-4 w-3/5">
+          <div className=" flex flex-col gap-y-4 w-3/5 max-w-screen-md">
             <Button variant="ghost" size="lg" className="font-semibold">
               Login
             </Button>
