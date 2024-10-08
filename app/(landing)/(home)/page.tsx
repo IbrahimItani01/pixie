@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
@@ -27,9 +28,15 @@ export default function Home() {
       </div>
       <div className=" flex flex-col gap-y-4 w-2/5 max-w-screen-sm">
         <Button variant="ghost" size="lg" className="font-semibold">
-          Login
+          <Link href="/sign-in">
+            Login
+          </Link>
         </Button>
-        <Button size="lg" className="font-semibold">Get Started</Button>
+        <Button size="lg" className="font-semibold">
+          <Link href="/sign-up">
+            Get Started
+          </Link>
+        </Button>
       </div>
     </>
   );

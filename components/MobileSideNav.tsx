@@ -72,7 +72,9 @@ export default function MobileSideNav() {
           </div>
           <DropdownMenuItem asChild>
             <Button variant="outline" className="w-full justify-center">
-              Get Started
+              <Link href="sign-up">
+                Get Started
+              </Link>
             </Button>
           </DropdownMenuItem>
         </div>
