@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from 'next/font/google'
+import { ClerkProvider } from "@clerk/nextjs";
 
 const roboto = Roboto ({subsets:['latin'],weight:['400']})
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <ClerkProvider>
       <html lang="en">
           <body
             className={roboto.className}
@@ -22,6 +23,6 @@ export default function RootLayout({
             {children}
           </body>
       </html>
-    </>
+    </ClerkProvider>
   );
 }
