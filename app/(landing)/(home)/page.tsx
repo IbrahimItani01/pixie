@@ -49,10 +49,7 @@ export default function Home() {
             <TextBox content=" Pixie simplifies the process
               with intuitive, powerful tools." order={2}/>
             
-            <TextBox content="Tailored for developers, designers, and creators alike, Pixie
-              offers seamless support in writing, design, and development,
-              making it your go-to solution for bringing ideas to life
-              effortlessly." order={3}/>
+            <TextBox order={3}/>
           </div>
         </div>
       </section>
