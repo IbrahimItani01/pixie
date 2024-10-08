@@ -13,7 +13,9 @@ export default function LandingLayout({
               key="hero"
               className="bg-gradient h-[85%] flex flex-col items-center justify-center w-full"
             >
-              {children}
+              <div className=" mx-auto items-center flex flex-col bg-white w-[95%] gap-y-10 py-10 rounded-sm max-w-screen-lg">
+                {children}
+              </div>
             </section>
             <Footer/>
         </div>

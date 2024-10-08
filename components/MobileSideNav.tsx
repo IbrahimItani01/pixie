@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -5,22 +6,72 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { User } from "lucide-react"
+import { cn } from "@/lib/utils"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export default function MobileSideNav() {
+  const pathName = usePathname();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon">
-          <User className="h-4 w-4" />
+          <Image 
+            src="/dropdown-icon.svg"
+            width={20}
+            height={20}
+            alt="Dropdown"
+          />
           <span className="sr-only">Open auth menu</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="p-3">
-        <div className="flex flex-col gap-y-2">
-         
+        <div className="flex flex-col gap-y-4">
+          <div className={cn(pathName==="/" && "bg-gradient text-white p-1 rounded-lg")}>
+            <Link
+              href="/"
+              className="flex gap-x-1 items-center"
+            >
+              <Image
+                src="/home-icon.svg"
+                width={20}
+                height={20}
+                alt="Home Page"
+              />
+              <h2 className="">Home</h2>
+            </Link>
+          </div>
+          <div className={cn(pathName==="/about-us" && "bg-gradient text-white p-1 rounded-lg")}>
+            <Link
+              href="/about-us"
+              className="flex gap-x-1 items-center"
+            >
+            <Image
+              src="/about-icon.svg"
+              width={20}
+              height={20}
+              alt="Home Page"
+            />
+            <h2>About</h2>
+            </Link>
+          </div>
+          <div className={cn(pathName==="/contact-us" && "bg-gradient text-white p-1 rounded-lg")}>
+            <Link
+              href="/contact-us"
+              className="flex gap-x-1 items-center"
+            >
+            <Image
+              src="/contact-icon.svg"
+              width={20}
+              height={20}
+              alt="Home Page"
+            />
+            <h2>Contact Us</h2>
+            </Link>
+          </div>
           <DropdownMenuItem asChild>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="outline" className="w-full justify-center">
               Get Started
             </Button>
           </DropdownMenuItem>
