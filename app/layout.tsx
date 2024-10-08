@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from 'next/font/google'
 import { ClerkProvider } from "@clerk/nextjs";
+import {NextUIProvider} from "@nextui-org/system";
 
 const roboto = Roboto ({subsets:['latin'],weight:['400']})
 export const metadata: Metadata = {
@@ -16,13 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-          <body
-            className={roboto.className}
-          >
-            {children}
-          </body>
-      </html>
+        <html lang="en">
+            <body
+              className={roboto.className}
+            >
+              <NextUIProvider>
+                {children}
+              </NextUIProvider>
+            </body>
+        </html>
     </ClerkProvider>
   );
 }
