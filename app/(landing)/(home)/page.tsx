@@ -5,10 +5,6 @@ import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
   return (
-      <section
-        key="hero"
-        className="bg-gradient h-[85%] flex flex-col items-center justify-center w-full"
-      >
         <div className=" mx-auto items-center flex flex-col bg-white w-[95%] gap-y-10 py-10 rounded-sm max-w-screen-lg">
           <div className="text-3xl text-center flex flex-col">
             <h1>Your AI Companion for: </h1>
@@ -36,6 +32,5 @@ export default function Home() {
             <Button size="lg" className="font-semibold">Get Started</Button>
           </div>
         </div>
-      </section>
   );
 }

@@ -9,7 +9,12 @@ export default function LandingLayout({
     return (
         <div className="bg-primaryColor h-screen w-full">
             <NavBar/>
-            {children}
+            <section
+              key="hero"
+              className="bg-gradient h-[85%] flex flex-col items-center justify-center w-full"
+            >
+              {children}
+            </section>
             <Footer/>
         </div>
     );
