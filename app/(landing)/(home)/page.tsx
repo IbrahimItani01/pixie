@@ -1,15 +1,13 @@
 "use client";
-import TextBox from "@/components/TextBox";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
   return (
-    <div className="bg-primaryColor h-screen w-full">
       <section
         key="hero"
-        className="bg-gradient h-[500px] flex flex-col items-center justify-center w-full"
+        className="bg-gradient h-[85%] flex flex-col items-center justify-center w-full"
       >
         <div className=" mx-auto items-center flex flex-col bg-white w-[95%] gap-y-10 py-10 rounded-sm max-w-screen-lg">
           <div className="text-3xl text-center flex flex-col">
@@ -39,20 +37,5 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section key="body">
-        <div className="flex flex-col space-y-4 mt-3 w-full items-center justify-center">
-          <h1 className="text-3xl font-semibold">About Pixie</h1>
-          <div className="w-[95%]">
-            <TextBox content="Pixie is an AI-powered SaaS companion designed to enhance your
-              creativity and productivity." order={1}/>
-
-            <TextBox content=" Pixie simplifies the process
-              with intuitive, powerful tools." order={2}/>
-            
-            <TextBox order={3}/>
-          </div>
-        </div>
-      </section>
-    </div>
   );
 }
