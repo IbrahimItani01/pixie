@@ -1,11 +1,12 @@
 "use client";
+import TextBox from "@/components/TextBox";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
   return (
-    <div className="bg-primaryColor h-screen">
+    <div className="bg-primaryColor h-screen w-full">
       <section
         key="hero"
         className="bg-gradient h-[500px] flex flex-col items-center justify-center w-full"
@@ -30,15 +31,31 @@ export default function Home() {
               />
             </span>
           </div>
-          <div className=" flex flex-col gap-y-4 w-3/5 max-w-screen-md">
+          <div className=" flex flex-col gap-y-4 w-2/5 max-w-screen-sm">
             <Button variant="ghost" size="lg" className="font-semibold">
               Login
             </Button>
-            <Button className="font-semibold">Get Started</Button>
+            <Button size="lg" className="font-semibold">Get Started</Button>
           </div>
         </div>
       </section>
-      <section key="body"></section>
+      <section key="body">
+        <div className="flex flex-col space-y-4 mt-3 w-full items-center justify-center">
+          <h1 className="text-3xl font-semibold">About Pixie</h1>
+          <div className="w-[95%]">
+            <TextBox content="Pixie is an AI-powered SaaS companion designed to enhance your
+              creativity and productivity." order={1}/>
+
+            <TextBox content=" Pixie simplifies the process
+              with intuitive, powerful tools." order={2}/>
+            
+            <TextBox content="Tailored for developers, designers, and creators alike, Pixie
+              offers seamless support in writing, design, and development,
+              making it your go-to solution for bringing ideas to life
+              effortlessly." order={3}/>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
