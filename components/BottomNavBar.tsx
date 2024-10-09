@@ -8,10 +8,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const BottomNavBar=()=> {
   const pages = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Products', href: '/products' },
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'ChatBot', href: '/text-generation' },
+    { name: 'Images', href: '/image-generation' },
+    { name: 'Code', href: '/code-generation' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -26,28 +26,27 @@ const BottomNavBar=()=> {
   }
 
   return (
-    <div className="w-full max-w-sm mx-auto">
-      <Card className="relative">
-        <CardContent className="flex items-center justify-center p-6">
+    <div className="w-full max-w-sm mx-auto mb-5">
+      <Card className="relative rounded-full bg-gradient">
+        <CardContent className=" flex items-center justify-center p-5">
           <Button 
             variant="ghost" 
             size="icon" 
-            className="absolute left-2" 
+            className="absolute left-4" 
             onClick={goToPrevious}
             aria-label="Previous button"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <Link href={pages[currentIndex].href} passHref>
-            <Button variant="outline" className="w-48">
+            <Button variant="none" className="text-2xl text-white">
               {pages[currentIndex].name}
-              <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
           <Button 
             variant="ghost" 
             size="icon" 
-            className="absolute right-2" 
+            className="absolute right-4" 
             onClick={goToNext}
             aria-label="Next button"
           >
@@ -55,16 +54,6 @@ const BottomNavBar=()=> {
           </Button>
         </CardContent>
       </Card>
-      <div className="flex justify-center mt-4">
-        {pages.map((_, index) => (
-          <div
-            key={index}
-            className={`h-2 w-2 rounded-full mx-1 ${
-              index === currentIndex ? 'bg-primary' : 'bg-gray-300'
-            }`}
-          />
-        ))}
-      </div>
     </div>
   )
 }
