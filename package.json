@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
+    "@emailjs/browser": "^4.4.1",
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/slider": "^2.2.17",
     "@nextui-org/spinner": "^2.0.34",
@@ -21,6 +22,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.11.4",
     "lucide-react": "^0.447.0",
