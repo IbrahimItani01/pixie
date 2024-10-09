@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-export default function ButtonCarousel() {
+const BottomNavBar=()=> {
   const pages = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -68,3 +68,4 @@ export default function ButtonCarousel() {
     </div>
   )
 }
+export default BottomNavBar;
