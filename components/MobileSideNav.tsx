@@ -7,12 +7,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
+import { SignedIn, useAuth, UserButton } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export default function MobileSideNav() {
   const pathName = usePathname();
+  const { isSignedIn} = useAuth();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -28,6 +31,13 @@ export default function MobileSideNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="p-3">
         <div className="flex flex-col gap-y-4">
+          {isSignedIn && (
+              <div className="flex items-center justify-center scale-110">
+                <SignedIn>
+                    <UserButton/>
+                </SignedIn>
+              </div>
+          )}
           <div className={cn(pathName==="/" && "bg-gradient text-white p-1 rounded-lg")}>
             <Link
               href="/"
@@ -71,11 +81,13 @@ export default function MobileSideNav() {
             </Link>
           </div>
           <DropdownMenuItem asChild>
-            <Button variant="outline" className="w-full justify-center">
-              <Link href="sign-up">
-                Get Started
-              </Link>
-            </Button>
+            {!isSignedIn && (
+              <Button variant="outline" className="w-full justify-center">
+                <Link href="sign-up">
+                  Get Started
+                </Link>
+              </Button>
+            )}
           </DropdownMenuItem>
         </div>
       </DropdownMenuContent>
