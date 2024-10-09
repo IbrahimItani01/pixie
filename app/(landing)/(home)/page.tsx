@@ -1,10 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
+  const {isSignedIn} = useAuth();
   return (
     <>
       <div className="text-3xl text-center flex flex-col">
@@ -27,16 +29,26 @@ export default function Home() {
         </span>
       </div>
       <div className=" flex flex-col gap-y-4 w-2/5 max-w-screen-sm">
-        <Button variant="ghost" size="lg" className="font-semibold">
-          <Link href="/sign-in">
-            Login
-          </Link>
-        </Button>
-        <Button size="lg" className="font-semibold">
-          <Link href="/sign-up">
-            Get Started
-          </Link>
-        </Button>
+        {isSignedIn?(
+             <Button size="lg" className="font-semibold">
+             <Link href="/dashboard">
+                To Dashboard
+             </Link>
+           </Button>
+        ):(
+          <>
+            <Button variant="ghost" size="lg" className="font-semibold">
+              <Link href="/sign-in">
+                Login
+              </Link>
+            </Button>
+            <Button size="lg" className="font-semibold">
+              <Link href="/sign-up">
+                Get Started
+              </Link>
+            </Button>
+          </>
+        )}
       </div>
     </>
   );
