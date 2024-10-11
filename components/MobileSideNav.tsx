@@ -8,14 +8,21 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 import { SignedIn, useAuth, UserButton } from "@clerk/nextjs"
+import { Spinner } from "@nextui-org/spinner"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 export default function MobileSideNav() {
   const pathName = usePathname();
   const { isSignedIn} = useAuth();
-
+  const [Loading,setLoading] = useState(true)
+  useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(false)
+    },500)
+  })
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -33,9 +40,13 @@ export default function MobileSideNav() {
         <div className="flex flex-col gap-y-4">
           {isSignedIn && (
               <div className="flex items-center justify-center scale-110">
-                <SignedIn>
-                    <UserButton/>
-                </SignedIn>
+                {Loading?(
+                  <Spinner size="sm" />
+                ):(
+                  <SignedIn>
+                      <UserButton/>
+                  </SignedIn>
+                )}
               </div>
           )}
           <div className={cn(pathName==="/" && "bg-gradient text-white p-1 rounded-lg")}>
