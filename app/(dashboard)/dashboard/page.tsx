@@ -1,21 +1,18 @@
-import Image from "next/image";
+import TextBox from "@/components/TextBox";
 import React from "react";
 
 const DashboardPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-[85%] gap-y-[100px] mx-auto">
-      <div className="flex flex-col items-center gap-x-2">
-        <Image src="/chat-logo.svg" width={40} height={40} alt="ChatBot Icon" />
-        <p className="text-xl">Answer your deepest questions with pixie 🤔 </p>
+    <div className="flex flex-col justify-center w-[95%] h-[85%] mx-auto">
+      <div>
+        <TextBox order={2} withLogo={true} content="Hey Pixie, tell me what can you do?" />
       </div>
-      <div className="flex flex-col items-center gap-x-2 ">
-        <Image src="/image-logo.svg" width={40} height={40} alt="Image Icon" />
-        <p className="text-xl">Let Pixie become your Picasso 🎨</p>
-      </div>
-      <div className="flex flex-col items-center gap-x-2">
-        <Image src="/code-logo.svg" width={40} height={40} alt="Code Icon" />
-        <p className="text-xl">Develop at ease with Pixie 👨🏼‍💻</p>
-      </div>
+
+      <TextBox order={1} forPixie={true} content="I can answer your deepest questions 🤔" />
+      <TextBox order={2} withLogo={true}  content="What else?" />
+      <TextBox order={5} forPixie={true} content="I can be your Picasso 🎨" />
+      <TextBox order={2} withLogo={true} content="and?" />
+      <TextBox order={5} forPixie={true} content="Mmmm... Ah yes! Your programming buddy 👨🏼‍💻" />
     </div>
   );
 };

@@ -1,10 +1,13 @@
+"use client"
 import BottomNavBar from "@/components/BottomNavBar";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, SignedIn, UserButton } from "@clerk/nextjs";
+import { Spinner } from "@nextui-org/spinner";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  
   return (
     <div className="h-screen overflow-hidden">
       <nav className="shadow-2xl h-[7.5%] flex justify-between">
@@ -15,9 +18,14 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <h1 className="text-2xl font-semibold text-secondaryColor">Pixie</h1>
         </div>
         <div key="DropDownMobile" className="mr-4 flex scale-125">
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <ClerkLoading>
+            <Spinner size="sm" color="secondary"/>
+          </ClerkLoading>
+          <ClerkLoaded>
+            <SignedIn>
+                <UserButton/>
+            </SignedIn>
+          </ClerkLoaded>
         </div>
       </nav>
       <div className="h-[85%] ">{children}</div>
