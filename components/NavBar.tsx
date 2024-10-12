@@ -9,6 +9,7 @@ const NavBar = () => {
         <div key="logo" className='flex items-center ml-2'>
           <Link
             href="/"
+            className="flex items-center"
           >
             <Image
               src="/logo.svg"
@@ -16,8 +17,8 @@ const NavBar = () => {
               width={50}
               height={50}
             />
+            <h1 className='text-2xl font-semibold text-secondaryColor'>Pixie</h1>
           </Link>
-          <h1 className='text-2xl font-semibold text-secondaryColor'>Pixie</h1>
         </div>
         <div key="DropDownMobile" className='mr-3'>
             <MobileSideNav/>

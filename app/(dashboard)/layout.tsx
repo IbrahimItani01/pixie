@@ -14,10 +14,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="h-screen overflow-hidden">
       <nav className="shadow-2xl h-[7.5%] flex justify-between">
         <div key="logo" className="flex items-center ml-2">
-          <Link href="/">
+          <Link href="/" className="flex items-center">
             <Image src="/logo.svg" alt="Pixie Logo" width={50} height={50} />
+            <h1 className="text-2xl font-semibold text-secondaryColor">Pixie</h1>
           </Link>
-          <h1 className="text-2xl font-semibold text-secondaryColor">Pixie</h1>
         </div>
         <div key="DropDownMobile" className="items-center mr-4 flex scale-125">
           <ClerkLoading>

@@ -15,6 +15,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { SendHorizonal } from "lucide-react";
 import Image from "next/image";
 import TextBox from "./TextBox";
+import Link from "next/link";
 
 export default function ChatComponent() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -65,7 +66,9 @@ export default function ChatComponent() {
     <Card ref={chatContainerRef} className="w-full max-w-2xl mx-auto h-[600px] flex flex-col">
       <CardHeader className="flex items-center">
         <CardTitle>
-          <Image src="/logo.svg" width={65} height={65} alt="Pixie Logo" />
+          <Link href="/dashboard">
+            <Image src="/logo.svg" width={65} height={65} alt="Pixie Logo" />
+          </Link>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-grow overflow-hidden">
