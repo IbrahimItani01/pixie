@@ -30,19 +30,19 @@ export default function Home() {
       </div>
       <div className=" flex flex-col gap-y-4 w-2/5 max-w-screen-sm">
         {isSignedIn?(
-             <Button size="lg" className="font-semibold">
+             <Button size="lg" className="font-semibold border-b-4 border-b-gradientFirst active:border-b-0">
              <Link href="/dashboard">
                 To Dashboard
              </Link>
            </Button>
         ):(
           <>
-            <Button variant="ghost" size="lg" className="font-semibold">
+            <Button variant="ghost" size="lg" className="font-semibold border-b-4 border-b-gradientFirst active:border-b-0">
               <Link href="/sign-in">
                 Login
               </Link>
             </Button>
-            <Button size="lg" className="font-semibold">
+            <Button size="lg" className="font-semibold border-b-4 border-b-gradientFirst active:border-b-0">
               <Link href="/sign-up">
                 Get Started
               </Link>
