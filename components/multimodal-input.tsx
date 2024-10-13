@@ -87,7 +87,7 @@ export function MultimodalInput({
             stop();
           }}
         >
-          <X/>
+          <X size={14}/>
         </Button>
       ) : (
         <Button
