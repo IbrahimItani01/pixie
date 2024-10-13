@@ -1,78 +1,80 @@
 "use client";
 
+import { Attachment, Message } from "ai";
 import { useChat } from "ai/react";
-import { useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { SendHorizonal } from "lucide-react";
-import Image from "next/image";
-import TextBox from "./TextBox";
+import { useState } from "react";
+
+import { Message as PreviewMessage } from "@/components/message";
+import { useScrollToBottom } from "@/components/use-scroll-to-bottom";
+
+import { MultimodalInput } from "./multimodal-input";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function ChatComponent() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
-  const chatContainerRef = useRef<HTMLDivElement>(null);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+export function Chat({
+  id,
+  initialMessages,
+}: {
+  id: string;
+  initialMessages: Array<Message>;
+}) {
+  const { messages, handleSubmit, input, setInput, append, isLoading, stop } =
+    useChat({
+      body: { id },
+      initialMessages,
+      onFinish: () => {
+        window.history.replaceState({}, "", `/chat/${id}`);
+      },
+    });
 
- 
+  const [messagesContainerRef, messagesEndRef] =
+    useScrollToBottom<HTMLDivElement>();
 
-  useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
-    }
-  }, [messages]);
-
-  const renderResponse = () => {
-    return (
-      <ScrollArea ref={scrollAreaRef} className="h-full pr-4">
-        <div>
-          {messages.map((m) => (
-            <TextBox
-              key={m.id}
-              withLogo={m.role === "user" && true}
-              forPixie={m.role !== "user" && true}
-              content={m.content}
-              order={m.role === "user" ? 2 : 1}
-            />
-          ))}
-        </div>
-      </ScrollArea>
-    );
-  };
+  const [attachments, setAttachments] = useState<Array<Attachment>>([]);
 
   return (
-    <Card ref={chatContainerRef} className="w-full max-w-2xl mx-auto h-[600px] flex flex-col">
-      <CardHeader className="flex items-center">
-        <CardTitle>
-          <Link href="/dashboard">
-            <Image src="/logo.svg" width={65} height={65} alt="Pixie Logo" />
-          </Link>
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow overflow-hidden">
-        {renderResponse()}
-      </CardContent>
-      <CardFooter>
-        <form onSubmit={handleSubmit} className="flex w-full space-x-2">
-          <Input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Chat with Pixie..."
-            className="flex-grow"
+      <div className=" bg-white h-[90%] w-[95%] flex flex-col justify-between items-center p-4 rounded-xl">
+        <Link href="/dashboard">
+          <Image 
+            src="/logo.svg"
+            width={70}
+            height={70}
+            alt="Pixie Logo"
           />
-          <Button type="submit" size="icon">
-            <SendHorizonal className="h-4 w-4" />
-          </Button>
+        </Link>
+        <div
+          ref={messagesContainerRef}
+          className="flex flex-col h-full w-full items-center overflow-y-scroll"
+        >
+
+          {messages.map((message, index) => (
+            <PreviewMessage
+              key={`${id}-${index}`}
+              role={message.role}
+              content={message.content}
+              attachments={message.experimental_attachments}
+              toolInvocations={message.toolInvocations}
+            />
+          ))}
+          <div
+            ref={messagesEndRef}
+            className="shrink-0 min-w-[24px] min-h-[24px]"
+          />
+        </div>
+
+        <form className="flex flex-row gap-2 relative items-end w-full px-4 md:px-0">
+          <MultimodalInput
+            input={input}
+            setInput={setInput}
+            handleSubmit={handleSubmit}
+            isLoading={isLoading}
+            stop={stop}
+            attachments={attachments}
+            setAttachments={setAttachments}
+            messages={messages}
+            append={append}
+          />
         </form>
-      </CardFooter>
-    </Card>
+      </div>
   );
 }
