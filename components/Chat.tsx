@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "ai/react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -18,18 +18,11 @@ import TextBox from "./TextBox";
 import Link from "next/link";
 
 export default function ChatComponent() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    keepLastMessageOnError: true,
-  });
-  const [isTyping, setIsTyping] = useState(false);
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    setIsTyping(true);
-    handleSubmit(e);
-    setIsTyping(false);
-  };
+ 
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -50,13 +43,6 @@ export default function ChatComponent() {
               order={m.role === "user" ? 2 : 1}
             />
           ))}
-          {isTyping && (
-            <div className="flex justify-start mb-4">
-              <div className="flex items-center bg-muted py-2 px-4 rounded-2xl">
-                <div className="dot-flashing"></div>
-              </div>
-            </div>
-          )}
         </div>
       </ScrollArea>
     );
@@ -75,14 +61,14 @@ export default function ChatComponent() {
         {renderResponse()}
       </CardContent>
       <CardFooter>
-        <form onSubmit={onSubmit} className="flex w-full space-x-2">
+        <form onSubmit={handleSubmit} className="flex w-full space-x-2">
           <Input
             value={input}
             onChange={handleInputChange}
             placeholder="Chat with Pixie..."
             className="flex-grow"
           />
-          <Button type="submit" size="icon" disabled={isTyping}>
+          <Button type="submit" size="icon">
             <SendHorizonal className="h-4 w-4" />
           </Button>
         </form>
