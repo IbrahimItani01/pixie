@@ -32,6 +32,7 @@ const TextBox = ({ content, order, withLogo, forPixie }: Props) => {
           </ClerkLoading>
           <ClerkLoaded>
             <Image
+            // @ts-expect-error needed
               src={user?.imageUrl}
               width={30}
               height={30}

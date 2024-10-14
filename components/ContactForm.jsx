@@ -1,6 +1,6 @@
 // eslint-disable-file no-use-before-define
 "use client";
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,7 +10,7 @@ import { Spinner } from "@nextui-org/spinner";
 import { useRouter } from "next/navigation";
 
 const ContactForm = () => {
-  const formRef = useRef<HTMLFormElement | null>(null);
+  const formRef = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();

@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
-import { ClerkLoaded, ClerkLoading, SignedIn, useAuth, UserButton } from "@clerk/nextjs"
+import { ClerkLoaded, ClerkLoading, SignedIn, SignOutButton, useAuth } from "@clerk/nextjs"
 import { Spinner } from "@nextui-org/spinner"
 import Image from "next/image"
 import Link from "next/link"
@@ -39,7 +39,7 @@ export default function MobileSideNav() {
                   </ClerkLoading>
                   <ClerkLoaded>
                     <SignedIn>
-                        <UserButton/>
+                        <SignOutButton/>
                     </SignedIn>
                   </ClerkLoaded>
               </div>
